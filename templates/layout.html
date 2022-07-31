@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Education Theme</title>
+    <!-- Bootstrap -->
+    <link href="{{url_for('static',filename='/style/css/bootstrap.css') }}" rel="stylesheet">
+    <!-- DL Menu CSS -->
+    <link href="{{url_for('static',filename='/style/js/dl-menu/component.css') }}" rel="stylesheet">
+    <!--SLICK SLIDER CSS-->
+    <link href="{{url_for('static',filename='/style/css/slick.css') }}" rel="stylesheet">
+    <!-- Font Awesome StyleSheet CSS -->
+    <link href="{{url_for('static',filename='/style/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome StyleSheet CSS -->
+    <link href="{{url_for('static',filename='/style/css/svg.css') }}" rel="stylesheet">
+    <!-- Pretty Photo CSS -->
+    <link href="{{url_for('static',filename='style/css/prettyPhoto.css') }}" rel="stylesheet">
+    <!-- Shortcodes CSS -->
+    <link href="{{url_for('static',filename='/style/css/shortcodes.css') }}" rel="stylesheet">
+    <!-- Widget CSS -->
+    <link href="{{url_for('static',filename='/style/css/widget.css') }}" rel="stylesheet">
+
+    <!-- Typography CSS -->
+    <link href="{{url_for('static',filename='/style/css/typography.css') }}" rel="stylesheet">
+    <!-- Custom Main StyleSheet CSS -->
+    <link href="{{url_for('static',filename='/style/css/style.css') }}" rel="stylesheet">
+    <!-- Color CSS -->
+    <link href="{{url_for('static',filename='/style/css/color.css') }}" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="{{url_for('static',filename='/style/css/responsive.css') }}" rel="stylesheet">
+    <script>
+        var desktopBtn = $("#desktop");
+        var mobileBtn = $("#mobile");
+        var body = $('body');
+
+        desktopBtn.on('click', function() {
+            body.addClass('large-screen');
+            togglePrimaryButtonStyle($(this));
+        })
+
+        mobileBtn.on('click', function() {
+            body.removeClass('large-screen');
+            togglePrimaryButtonStyle($(this));
+        })
+
+        function togglePrimaryButtonStyle(el) {
+            var sibling = el.parent('.btn-group').siblings('.btn-group').find('.btn');
+            el.addClass('btn-primary');
+            sibling.removeClass('btn-primary').addClass('btn-default');
+        }
+    </script>
+</head>
+<div class="iq_wrapper">
+    <!--Header Wrap Start-->
+    <header class="iq_header_1">
+        <div class="container">
+            <!--Logo Wrap Start-->
+            <div class="iq_logo">
+                <a href="#"><img src="{{url_for('static',filename='/style/images/logo.jpg') }}" alt="Iqoniq Themes"></a>
+            </div>
+            <!--Logo Wrap Start-->
+            <!--Top Strip Wrap Start-->
+            <div class="iq_ui_element">
+                <!--Top Strip Wrap Start-->
+                <div class="iq_top_strip">
+                    <div class="iq_top_contact pull-left">
+                        <a href="#"> Call us : +212 211239456</a>
+                        <a href="#"> Email :  fsac@gmail.com</a>
+                    </div>
+                    <div class="iq_time_wrap pull-right"><i class="fa fa-clock-o"></i> Mon - Sat : 09:00 am - 05:30 pm </div>
+                </div>
+                <!--Top Strip Wrap End-->
+                <!--Navigation wrap Start-->
+                <div class="navigation-wrapper pull-left">
+                    <div class="navigation pull-left">
+                        <ul>
+                            <li class="active"><a href="{{ url_for('Home_admin') }}">Home</a></li>
+                            <li><a href="{{ url_for('annonces_admin') }}">Gestion Annonces</a></li>
+                            <li><a href="{{ url_for('etu_admin') }}">Comptes Etudiant</a></li>
+                            <li><a href="{{ url_for('ens_admin') }}">Comptes Enseignant</a></li>
+                            <li><a href="{{ url_for('fil_admin') }}">Gestion Filieres</a></li>
+                            <li><a href="{{ url_for('ev_admin') }}">Gestion Events</a></li>
+                            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--Navigation wrap End-->
+
+            </div>
+            <!--Top Strip Wrap End-->
+        </div>
+
+    </header>
+
+    <!--Header Wrap End-->
+</div>
+
+<!--Banner Wrap End-->
+<!--Iqoniq Content Start-->
+<div class="iq_content_wrap">
+
+    {% block content %}{% endblock %}

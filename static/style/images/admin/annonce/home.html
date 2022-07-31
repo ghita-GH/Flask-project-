@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<section>
+  <div class="event-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="event_pg_blog">
+            <div class="edu_upmg_area">
+              <!--Heading Wrap Start-->
+               <div class="row">
+                {% for e in annonces %}
+                <div class="col-md-6 col-sm-6" >
+                  <div class="iq_course_list">
+                                      <figure style="height: 200px; width: 200px;">
+                                        {% if e.ext in ['.jpge','.png', '.gif','.jpg'] %}
+                                            <img src="{{url_for('static',filename='uploads/') }}{{e.file}}">
+                                       
+                                        {% elif e.ext in ['.txt', '.pdf'] %}
+                                            <object data="{{e.file}}" type="application/pdf" style="width:500px;height:200px;">
+                                                <p>Alternative text - include a link <a href="{{url_for('static',filename='uploads/') }}{{e.file}}">to the Document!</a></p>
+                                            </object>
+                                        {% endif %}	
+                                      </figure>
+                                      <div class="iq_course_list_des">
+                                          <h5><a href="#">{{e.titre}}</a></h5>
+                                          <p>{{e.description}} </p>
+                                          <p>Annonce pour : {{e.NAME}} </p>
+                                          <ul>
+                                           <a href="/edite_annonce/{{e.id}}" class="btn btn-danger">edit</a>
+                                           <a href="/delete_annonce/{{e.id}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger btn-delete">delete</a>
+                                          </ul>
+                                      </div>
+                                  </div>
+                </div>
+                {%endfor%}
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+                                        <!--Search Wrap Start-->
+                                        <div class="col-md-4">
+                                          <div class="iq_search_courses">
+                                              <h4>Create New Annonce</h4>
+                                                <form action="{{ url_for('annonces_admin') }}" method="POST"  enctype = "multipart/form-data">
+                                                    <!--Input Start-->
+                                                  <div class="iq-input">
+                                                      <input type="text" placeholder="titre **" name="titre" required>
+                                                    </div>
+                                                    <!--Input End-->
+                                                    <!--Input Start-->
+                                                    <div class="iq-input">
+                                                      <input type="text" placeholder="description" name="description">
+                                                    </div>
+                                                    <!--Input End-->
+                                                    <!--Input Start-->
+
+                                                    <div class="iq-input">
+                                                      <select name="departement" id="select">
+                                                        <option value="">--Please choose an option--</option>
+                                                        {% for a in filiere %} 
+                                                        <option value="{{a.id}}">{{a.NAME}}</option>
+                                                        {%endfor%} 
+                                                    </select>
+                                                    </div>
+                                                    <div class="iq-input">
+                                                      <input type="file" name = "file" >
+                                                  </div>
+                                                    <div class="iq-input">
+                                                      <input class="iq_link_1" type="submit" value="Creat">
+                                                    </div>
+                                                    <!--Input End-->
+                                                </form>
+                                            </div>
+                                        </div>
+          
+      
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'layout_etu.html' %} {% block content %}
+
+<section>
+    <div class="container">
+        <div class="iq_heading_1 text-center">
+            {% for f in filiere%}
+            <h4>Master <span>{{f.NAME}}</span></h4>
+            <p>{{f.description}}</p>
+            {%endfor%}
+        </div>
+        <!--Heading Wrap Start-->
+        <div class="iq_heading_1 text-center">
+            <h4>Our <span>Teachers</span></h4>
+            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, </p>
+            <p>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+        </div>
+        <!--Heading Wrap End-->
+        <!--Teacher Wrap List Start-->
+        <div class="row">
+            {% for en in ens %}
+            <!--Teacher Thumb Start-->
+            <div class="col-md-4 col-sm-6">
+                <div class="iq_teacher_style_1">
+                    <figure>
+                        <img src="{{url_for('static',filename='uploads/')}}{{en.image}}" height="200" width="200">
+                    </figure>
+                    <div class="text">
+                        <h4><a href="#">{{en.nom}}{{en.prenom}}</a></h4>
+                        <h6>Teacher</h6>
+
+                        <ul class="iq_footer_social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!--Teacher Thumb End-->
+            {%endfor%}
+        </div>
+        <!--Teacher Wrap List End-->
+    </div>
+</section>
+
+{% endblock %}

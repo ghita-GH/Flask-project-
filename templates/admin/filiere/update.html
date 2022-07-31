@@ -1,0 +1,37 @@
+{% extends 'layout.html' %} {% block content %}
+
+<section>
+    <div class="event-page">
+        <div class="container">
+
+            <div class="col-md-4">
+                <div class="iq_search_courses" style="margin-left: 400px;margin-top:20px;">
+                    <h4>Update A MASTER</h4>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <!--Input Start-->
+                        <div class="iq-input">
+                            <input type="text" placeholder="nom" name="NAME" value="{{contact.NAME}}">
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="text" placeholder="abreviation" name="abreviation" value="{{contact.abreviation}}">
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="text" placeholder="description" name="description" value="{{contact.description}}">
+                        </div>
+
+                        <div class="iq-input">
+                            <input class="iq_link_1" type="submit" value="Update">
+                        </div>
+                        <!--Input End-->
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}

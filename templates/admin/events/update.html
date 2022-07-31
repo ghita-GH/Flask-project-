@@ -1,0 +1,43 @@
+{% extends 'layout.html' %} {% block content %}
+
+<section>
+    <div class="event-page">
+        <div class="container">
+
+            <div class="col-md-4">
+                <div class="iq_search_courses" style="margin-left: 400px; margin-top:20px;">
+                    <h4>Update An Event</h4>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <!--Input Start-->
+                        <div class="iq-input">
+                            <input type="hidden" placeholder="nom" name="id" value="{{contact.id}}">
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="text" placeholder="nom" name="nom" value="{{contact.nom}}">
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="date" placeholder="abreviation" name="date" value=" {{contact.date}} ">
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="time" placeholder="description" name="heure" value="{{contact.heure}}">
+                        </div>
+                        <div class="iq-input">
+                            <input type="file" placeholder="file" name="file">
+                        </div>
+                        <div class="iq-input">
+                            <input class="iq_link_1" type="submit" value="Create">
+                        </div>
+                        <!--Input End-->
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}

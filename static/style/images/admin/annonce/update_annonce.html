@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<section>
+  <div class="event-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="event_pg_blog">
+            <div class="edu_upmg_area">
+              <!--Heading Wrap Start-->
+               <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="iq_course_list">
+                                      <figure>
+                                        {% if contact.ext in ['.jpge','.png', '.gif','.jpg'] %}
+                                            <img src="{{url_for('static',filename='uploads/') }}{{contact.file}}" style="width:500px;height:200px;">
+                                       
+                                        {% elif contact.ext in ['.txt', '.pdf'] %}
+                                            <object data="{{contact.file}}" type="application/pdf" style="width:500px;height:200px;">
+                                                <p>Alternative text - include a link <a href="{{url_for('static',filename='uploads/') }}{{contact.file}}">to the Document!</a></p>
+                                            </object>
+                                        {% endif %}	
+                                      </figure>
+                                      <div class="iq_course_list_des">
+                                          <h5><a href="#">{{contact.titre}}</a></h5>
+                                          <p>{{contact.description}} </p>
+                                          <p>Annonce pour : {{contact.NAME}} </p>
+                                          <ul>
+                                           <a href="/delete_annonce/{{contact.id}}" class="btn btn-danger btn-delete">delete</a>
+                                          </ul>
+                                      </div>
+                                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+                                        <!--Search Wrap Start-->
+                                        <div class="col-md-4">
+                                          <div class="iq_search_courses">
+                                              <h4>Create New Annonce</h4>
+                                                <form action="" method="POST"  enctype = "multipart/form-data">
+                                                    <!--Input Start-->
+                                                  <div class="iq-input">
+                                                      <input type="text" placeholder="titre" name="titre" value="{{contact.titre}}">
+                                                    </div>
+                                                    <!--Input End-->
+                                                    <!--Input Start-->
+                                                    <div class="iq-input">
+                                                      <input type="text" placeholder="description" name="description" value="{{contact.description}}">
+                                                    </div>
+                                                    <!--Input End-->
+                                                    <!--Input Start-->
+
+                                                    <div class="iq-input">
+                                                      <select name="departement" id="select">
+                                                        <option value="">--Please choose an option--</option>
+                                                        {% for a in filiere %} 
+                                                        <option value="{{a.id}}">{{a.NAME}}</option>
+                                                        {%endfor%} 
+                                                    </select>
+                                                    </div>
+                                                    <div class="iq-input">
+                                                      <input type="file" name = "file" value="{{contact.file}}">
+                                                  </div>
+                                                    <div class="iq-input">
+                                                      <input class="iq_link_1" type="submit" value="Update">
+                                                    </div>
+                                                    <!--Input End-->
+                                                </form>
+                                            </div>
+                                        </div>
+          
+      
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

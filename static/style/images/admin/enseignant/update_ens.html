@@ -1,0 +1,109 @@
+{% extends 'layout.html' %} {% block content %}
+
+<script>
+    var arr = [];
+    var arr2 = [];
+
+    function myFunction() {
+        var no = document.getElementById("select");
+        var option = no.options[no.selectedIndex].value;
+        arr.push(option);
+        console.log(option);
+        console.log(arr)
+        var txt = document.getElementById("result").value;
+        txt = txt + option + ",";
+        document.getElementById("result").value = txt;
+
+        var option2 = no.options[no.selectedIndex].text;
+        arr2.push(option);
+        var txt2 = document.getElementById("sel").value;
+        txt2 = txt2 + option2 + ",";
+        document.getElementById("sel").value = txt2;
+
+    }
+</script>
+
+<section>
+    <div class="event-page">
+        <div class="container">
+
+            <div class="col-md-4">
+                <div class="iq_search_courses" style="margin-left: 200px;margin-top:15px">
+                    <h4>Update An Enseignant Account</h4>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <!--Input Start-->
+
+                        <input type="hidden" placeholder="id" name="id" value="{{contact.id}}" hidden>
+
+                        <div class="iq-input">
+                            <input type="text" placeholder="nom" name="nom" value="{{contact.nom}}" required>
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="text" placeholder="prenom" name="prenom" value="{{contact.prenom}}" required>
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="text" placeholder="cni" name="cni" value="{{contact.cni}}" required>
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="text" placeholder="email" name="email" value="{{contact.email}}" required>
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="file" name="iamge" id="image" accept="image/png, image/jpeg">
+                        </div>
+                        <div class="iq-input">
+                            <input type="hidden" name="old_image" value="{{contact.image}}">
+                        </div>
+
+                        <div class="iq-input">
+                            <input class="iq_link_1" type="submit" value="Update">
+                        </div>
+                        <!--Input End-->
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="iq_search_courses" style="margin-top:15px ;margin-left:250px;">
+                    <h4>Update Ces affectation Account</h4>
+                    <input type="button" onclick="myFunction()" value="Affecter d'autres valleur">
+                    <form action="{{ url_for('mod_aff') }}" method="POST" enctype="multipart/form-data">
+                        <div class="iq-input">
+                            <input type="hidden" id="id" name="id" size="20" value="{{contact.id}}">
+                        </div>
+                        <div class="iq-input">
+                            <select name="departement" id="select">
+                                                        {% for a in filiere %} 
+                                                        <option value="{{a.id}}">{{a.NAME}}</option>
+                                                        {%endfor%} 
+                                                    </select>
+                            <div class="iq-input">
+                                <input type="hidden" id="result" name="result" size="20">
+                            </div>
+                            <div class="iq-input">
+                                <input type="text" id="sel" name="sel" size="20" readonly>
+                            </div>
+                            <div class="iq-input">
+                                Ses Propres affectations {% for e in affecta %}
+                                <ul>{{e.NAME}}</ul>
+                                {%endfor%}
+                            </div>
+                        </div>
+                        <div class="iq-input">
+                            <input class="iq_link_1" type="submit" value="Update">
+                        </div>
+                        <!--Input End-->
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</section>
+
+
+{% endblock %}

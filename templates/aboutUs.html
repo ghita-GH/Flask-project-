@@ -1,0 +1,51 @@
+{% extends 'layout_etu.html' %} {% block content %}
+
+<section>
+    <div class="container">
+
+        <!--Heading Wrap Start-->
+        <div class="iq_heading_1 text-center">
+            <h4>About <span>US:</span></h4>
+            <p>La Faculté des Sciences Aïn Chock de Casablanca (FSAC) est l’un des 18 établissements de l’Université Hassan II de Casablanca. Depuis sa création en 1981, notre faculté n’a cessé de cultiver l’excellence avec un enseignement et une recherche
+                de pointe dans de nombreux domaines, notamment en physique, chimie, sciences de la terre et de l’univers, biologie, mathématiques et informatique. L’expérience indéniable et le dévouement sans condition du corps enseignant permet d’assurer
+                une formation et un encadrement pédagogique de haut niveau dans les domaines les plus avancés. Les Laboratoires et les Centres de recherche, domiciliés à la faculté, préparent et sensibilisent nos doctorants de façon continue aux défis
+                scientifiques d’aujourd’hui et de demain. Forts de leur production en termes de publications internationales indexées, de doctorats soutenus et de leur ouverture à l’international, ces structures de recherche contribuent largement au rayonnement
+                scientifique de notre faculté et de l’Université Hassan II de Casablanca. Sur le plan de la formation académique, notre faculté a toujours œuvré à l’amélioration de l’adéquation formation-emploi (formation fondamentale et continue,…),
+                à la modernisation des méthodes pédagogiques par l’utilisation des Nouvelles Technologies d’Information et de Communication. La richesse de notre offre de formation (Licences professionnelles et Masters) parfaitement adaptée aux besoins
+                de notre pays, notamment les domaines de l’énergie, l’automobile et l’aéronautique, l’informatique, la biotechnologie, les géo- ressources, l’environnement,… permet une meilleure insertion de nos lauréats dans la vie active. Le Décanat,
+                avec tous les responsables des différentes structures, souhaite continuer les efforts pour cultiver l’excellence en recherche scientifique et en formation, améliorer de manière continue les conditions de travail, d’encadrement, et plus
+                généralement le bien- être des étudiants, des personnels et tous les utilisateurs de cet espace universitaire. Des efforts seront également poursuivis pour continuer à développer davantage des partenariats avec les environnements universitaires
+                et socio-économiques, nationaux et internationaux. Notre mission principale sera de continuer à développer les liens avec notre environnement pour mieux faire connaître notre Faculté et les défis scientifiques de notre temps.</p>
+
+        </div>
+        <!--Heading Wrap End-->
+        <!--Teacher Wrap List Start-->
+        <div class="row">
+
+            <!--Teacher Thumb Start-->
+            <div class="col-md-4 col-sm-6" style="margin-left: 400px;">
+                <div class="iq_teacher_style_1">
+                    <figure>
+                        <img src="{{url_for('static',filename='uploads/doyen.jpg')}}" height="200" width="200">
+                    </figure>
+                    <div class="text">
+                        <h4><a href="#">Pr. Omar SADDIQI</a></h4>
+                        <h6>Doyen de la FSAC depuis 2014</h6>
+
+                        <ul class="iq_footer_social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

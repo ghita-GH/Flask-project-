@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="iq_content_wrap">
+
+    <!--Number Counter Wrap End-->
+    <!--Our Teacher Wrap Start-->
+    <!--Our Teacher Wrap End-->
+    <!--Our Blog Slider Start-->
+    <section class="center-slider-wrap">
+        <div class="container">
+            <div class="blog-slider">
+                {% for e in Home %}
+                <div class="col-md-4 col-sm-6">
+                    <!--Center Dec Start-->
+                    <div class="center-dec">
+                        <figure style="height: 200px; width: 200px;">
+                        {% if e.ext in ['.jpge','.png', '.gif','.jpg'] %}
+                            <img src="{{url_for('static',filename='uploads/') }}{{e.file}}" style="width:500px;height:200px;">
+                            {% elif e.ext in ['.txt', '.pdf'] %}
+                            <object data="{{e.file}}" type="application/pdf" style="width:500px;height:200px;">
+                                <p>Alternative text - include a link <a href="{{url_for('static',filename='uploads/') }}{{e.file}}">to the Document!</a></p>
+                            </object>
+                            {% endif %}
+                        </figure>
+                        <div class="text">
+                            <h5><a href="#">{{e.titre}}</a></h5>
+                            <p> {{e.description}}</p>
+                        </div>
+                    </div>
+                    <!--Center Dec End-->
+                </div>
+                {% endfor %}
+
+            </div>
+            <!--Slider Strat Start-->
+        </div>
+    </section>
+</div>
+
+{% endblock %}

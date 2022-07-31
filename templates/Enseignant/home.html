@@ -1,0 +1,115 @@
+{% extends 'layout_etu.html' %} {% block content %}
+
+<div class="iner_banner">
+    <div class="container">
+        <h5>LES ANNONCES QUI VOUS CONCERNE </h5>
+        <div class="banner_iner_capstion">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blog Large</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="iq_content_wrap">
+    <!--BLOG1 PAGE START-->
+    <section>
+        <div class="blog1_page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+
+                        {% for e in f %}
+                        <!--BLOG1 THUMB START-->
+                        <div class="blog-list">
+                            <!--BLOG1 THUMB FIGURE START-->
+                            <figure>
+                                {% if e.ext in ['.jpge','.png', '.gif','.jpg'] %}
+                                <img src="{{url_for('static',filename='uploads/') }}{{e.file}}" style="width:500px;height:200px;"> {% elif e.ext in ['.txt', '.pdf'] %}
+                                <object data="{{e.file}}" type="application/pdf" style="width:500px;height:200px;">
+                                        
+                                    </object> {% endif %}
+                            </figure>
+                            <!--BLOG1 THUMB FIGURE END-->
+                            <!--BLOG1 THUMB CAPSTION START-->
+                            <div class="blog-caption">
+                                <h5 class="blog-title"><a href="{{url_for('static',filename='uploads/') }}{{e.file}}">{{e.titre}}</a></h5>
+                                <ul class="course_comments">
+                                    <li>
+                                        <a href="#"><i class="fa fa-user"></i>{{e.NAME}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-clock-o"></i>Feb 09, 2015</a>
+                                    </li>
+                                </ul>
+                                <p> {{e.description}} </p>
+
+                            </div>
+                            <!--BLOG1 THUMB CAPSTION END-->
+                        </div>
+                        <!--BLOG1 PAGE END-->
+                        <div class="border-div"></div>
+                        {%endfor%}
+                    </div>
+                    <div class="col-md-4">
+                        <div class="aside-bar">
+                            <!--course_inrp_side_search end-->
+                            <!--coures_archives start-->
+                            <div class="widget widget_archive">
+                                <!--Widget Title Start-->
+                                <h5 class="widget-title"><span>our</span> Masters</h5>
+                                <!--Widget Title End-->
+                                <ul>
+                                    {% for f in filiere %}
+                                    <li>
+                                        <a href="/infoFiliere/{{f.NAME}}">{{f.NAME}}</a>
+                                    </li>
+                                    {%endfor%}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--BLOG1 PAGE END-->
+    </section>
+</div>
+
+
+<section class="iq_upcomming_bg">
+    <div class="container">
+        <!--Heading Wrap Start-->
+        <div class="iq_heading_1 text-center">
+            <h4>Up Coming <span>Events</span></h4>
+            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                <br>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+        </div>
+        <!--Heading Wrap End-->
+        <!--Upcomming List Wrap Start-->
+        <div class="row">{% for e in events %}
+            <!--UpComming Event Start-->
+            <div class="col-md-3 col-sm-6">
+                <div class="iq_upcomming_event">
+                    <figure>
+                        <img src="{{url_for('static',filename='uploads/') }}{{e.image}}" style="height:375px; width: 260px;">
+                    </figure>
+                    <div class="iq_upcomming_des">
+
+                        <span>{{e.date}}</span>
+                        <p>{{e.heure}}</p>
+                        <h5><a href="#">{{e.nom}}</a></h5>
+
+                    </div>
+                </div>
+            </div>
+
+            {%endfor%}
+        </div>
+        <!--Upcomming List Wrap End-->
+    </div>
+</section>
+{% endblock %}

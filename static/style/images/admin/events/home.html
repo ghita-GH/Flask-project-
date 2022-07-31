@@ -1,0 +1,85 @@
+{% extends 'layout.html' %} {% block content %}
+
+<section>
+    <div class="event-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="event_pg_blog">
+                        <div class="edu_upmg_area">
+                            <!--Heading Wrap Start-->
+                            <div class="row">
+
+
+
+                                <body class="large-screen">
+                                    <div class="wrap">
+                                        <div class="table-wrapper">
+                                            <div class="row">{% for e in events %}
+                                                <!--UpComming Event Start-->
+                                                <div class="col-md-3 col-sm-6">
+                                                    <div class="iq_upcomming_event">
+                                                        <figure>
+                                                            <img src="{{url_for('static',filename='uploads/') }}{{e.image}}" height="375px" width="260px">
+                                                        </figure>
+                                                        <div class="iq_upcomming_des">
+
+                                                            <span>{{e.date}}</span>
+                                                            <p>{{e.heure}}</p>
+                                                            <h5><a href="#">{{e.nom}}</a></h5>
+
+
+                                                        </div>
+
+                                                    </div><a href="/delete_ev/{{e.id}}" class="btn btn-primary btn-delete">delete</a>
+                                                    <a href="/edite_ev/{{e.id}}" class="btn btn-primary btn-delete">Edit</a>
+                                                </div>
+                                                {%endfor%}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </body>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--Search Wrap Start-->
+                <div class="col-md-4">
+                    <div class="iq_search_courses" style="margin-top: 3px;">
+                        <h4>ADD NEW EVENT </h4>
+                        <form action="{{ url_for('ev_admin') }}" method="POST" enctype="multipart/form-data">
+                            <!--Input Start-->
+                            <div class="iq-input">
+                                <input type="text" placeholder="nom" name="nom">
+                            </div>
+
+                            <div class="iq-input">
+                                <input type="date" placeholder="abreviation" name="date">
+                            </div>
+
+                            <div class="iq-input">
+                                <input type="time" placeholder="description" name="heure">
+                            </div>
+                            <div class="iq-input">
+                                <input type="file" placeholder="file" name="file">
+                            </div>
+                            <div class="iq-input">
+                                <input class="iq_link_1" type="submit" value="Create">
+                            </div>
+                            <!--Input End-->
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

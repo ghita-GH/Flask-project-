@@ -1,0 +1,120 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<section>
+  <div class="event-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="event_pg_blog">
+            <div class="edu_upmg_area">
+              <!--Heading Wrap Start-->
+               <div class="row">
+
+                <h1>Upload your CSV file</h1>
+                <form method="POST" action="{{ url_for('parseCSV') }}" enctype="multipart/form-data">
+                  <p><input type="file" name="file"></p>
+                  <p><input type="submit" value="Submit"></p>
+                </form>
+
+                <body class="large-screen">
+                  <div class="wrap">
+                    <div class="table-wrapper">
+                      <table class="table-responsive card-list-table">
+                       
+                        <thead>
+                          <tr>
+                            <th>username</th>
+                            <th>Email</th>
+                            <th>cni</th>
+                            <th>cne</th>
+                            <th>nom</th>
+                            <th>prenom</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for e in etu %} 
+                          <tr>
+                            <td data-title="Column #1"> {{e.username}}</td>
+                            <td data-title="Column #2">{{e.email}}</td>
+                            <td data-title="Column #3">{{e.cni}}</td>
+                            <td data-title="Column #4">{{e.cne}}</td>
+                            <td data-title="Column #5">{{e.nom}}</td>
+                            <td data-title="Column #5">{{e.prenom}}</td>
+                            <td data-title="Column #5"> <a href="/edite_etu/{{e.id}}" class="btn btn-danger">edit</a>
+                              <a href="/delete_etu/{{e.id}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger btn-delete">delete</a>
+                             </td>
+                          </tr>
+                          {%endfor%} 
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </body>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+                                        <!--Search Wrap Start-->
+                                        <div class="col-md-4">
+                                          <div class="iq_search_courses">
+                                              <h4>Create New Etudiant Account</h4>
+                                                <form action="" method="POST"  enctype = "multipart/form-data">
+                                                    <!--Input Start-->
+                                                  <div class="iq-input">
+                                                      <input type="text" placeholder="nom" name="nom" required>
+                                                    </div>
+
+                                                    <div class="iq-input">
+                                                      <input type="text" placeholder="prenom" name="prenom" required>
+                                                    </div>
+                                                    
+                                                    <div class="iq-input">
+                                                      <input type="text" placeholder="cne" name="cne" required>
+                                                    </div>
+                                                    
+                                                    <div class="iq-input">
+                                                      <input type="text" placeholder="cni" name="cni" required>
+                                                    </div>
+                                                    
+                                                    <div class="iq-input">
+                                                      <input type="text" placeholder="email" name="email" required>
+                                                    </div>
+                                                    
+
+                                                    <!--Input End-->
+                                                    <!--Input Start-->
+
+                                                    <div class="iq-input">
+                                                      <select name="departement" id="select">
+                                                        <option value="">--Please choose an option--</option>
+                                                        {% for a in filiere %} 
+                                                        <option value="{{a.id}}">{{a.NAME}}</option>
+                                                        {%endfor%} 
+                                                    </select>
+                                                    </div>
+                                                    <div class="iq-input">
+                                                      <input class="iq_link_1" type="submit" value="Creat">
+                                                    </div>
+                                                    <!--Input End-->
+                                                </form>
+                                            </div>
+                                        </div>
+          
+      
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+{% endblock %}

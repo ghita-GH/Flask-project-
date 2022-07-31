@@ -1,0 +1,57 @@
+{% extends 'layout.html' %} {% block content %}
+
+<section>
+    <div class="event-page">
+        <div class="container">
+
+            <div class="col-md-4">
+                <div class="iq_search_courses" style="margin-left:400px; margin-top:10px;">
+                    <h4>Update An Etudiant Account</h4>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <!--Input Start-->
+                        <div class="iq-input">
+                            <input type="text" placeholder="nom" name="nom" value="{{contact.nom}}">
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="text" placeholder="prenom" name="prenom" value="{{contact.prenom}}">
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="text" placeholder="cne" name="cne" value="{{contact.cne}}">
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="text" placeholder="cni" name="cni" value="{{contact.cni}}">
+                        </div>
+
+                        <div class="iq-input">
+                            <input type="text" placeholder="email" name="email" value="{{contact.email}}">
+                        </div>
+
+
+                        <!--Input End-->
+                        <!--Input Start-->
+
+                        <div class="iq-input">
+                            <select name="departement" id="select">
+                                                        <option value="{{contact.id_fil}}" selected>--Please choose an option--</option>
+                                                        {% for a in filiere %} 
+                                                        <option value="{{a.id}}">{{a.NAME}}</option>
+                                                        {%endfor%} 
+                                                    </select>
+                        </div>
+                        <div class="iq-input">
+                            <input class="iq_link_1" type="submit" value="Update">
+                        </div>
+                        <!--Input End-->
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}

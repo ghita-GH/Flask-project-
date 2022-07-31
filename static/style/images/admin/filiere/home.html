@@ -1,0 +1,85 @@
+{% extends 'layout.html' %} {% block content %}
+
+<section>
+    <div class="event-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="event_pg_blog">
+                        <div class="edu_upmg_area">
+                            <!--Heading Wrap Start-->
+                            <div class="row">
+
+
+
+                                <body class="large-screen">
+                                    <div class="wrap">
+                                        <div class="table-wrapper">
+                                            <table class="table-responsive card-list-table">
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>Abreviation</th>
+                                                        <th>Nom complet</th>
+                                                        <th>description</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for e in filiere %}
+                                                    <tr>
+                                                        <td data-title="Column #1"> {{e.NAME}}</td>
+                                                        <td data-title="Column #2">{{e.abreviation}}</td>
+                                                        <td data-title="Column #3">{{e.description}}</td>
+                                                        <td>
+                                                            <a href="/delete_fil/{{e.id}}" class="btn btn-primary btn-delete" style="width:60px ;height:30px;">delete</a>
+                                                            <a href="/edite_fil/{{e.id}}" class="btn btn-primary btn-delete" style="width:60px ;height:30px;">Edit</a>
+                                                        </td>
+                                                    </tr>
+                                                    {%endfor%}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </body>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--Search Wrap Start-->
+                <div class="col-md-4">
+                    <div class="iq_search_courses" style="margin-top: 3px;">
+                        <h4>ADD NEW MASTER </h4>
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            <!--Input Start-->
+                            <div class="iq-input">
+                                <input type="text" placeholder="abreviation" name="NAME">
+                            </div>
+
+                            <div class="iq-input">
+                                <input type="text" placeholder="nom" name="abreviation">
+                            </div>
+
+                            <div class="iq-input">
+                                <input type="text" placeholder="description" name="description">
+                            </div>
+
+                            <div class="iq-input">
+                                <input class="iq_link_1" type="submit" value="Create">
+                            </div>
+                            <!--Input End-->
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

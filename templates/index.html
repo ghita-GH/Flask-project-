@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Education Theme</title>
+    <!-- Bootstrap -->
+    <link href="./static/style/css/bootstrap.css" rel="stylesheet">
+    <!-- DL Menu CSS -->
+    <link href="./static/style/js/dl-menu/component.css" rel="stylesheet">
+    <!--SLICK SLIDER CSS-->
+    <link rel="stylesheet" type="text/css" href="./static/style/css/slick.css" />
+    <!-- Font Awesome StyleSheet CSS -->
+    <link href="./static/style/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Font Awesome StyleSheet CSS -->
+    <link href="./static/style/css/svg.css" rel="stylesheet">
+    <!-- Pretty Photo CSS -->
+    <link href="./static/style/css/prettyPhoto.css" rel="stylesheet">
+    <!-- Shortcodes CSS -->
+    <link href="./static/style/css/shortcodes.css" rel="stylesheet">
+    <!-- Widget CSS -->
+    <link href="./static/style/css/widget.css" rel="stylesheet">
+    <!-- Typography CSS -->
+    <link href="./static/style/css/typography.css" rel="stylesheet">
+    <!-- Custom Main StyleSheet CSS -->
+    <link href="./static/style/css/style.css" rel="stylesheet">
+    <!-- Color CSS -->
+    <link href="./static/style/css/color.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="./static/style/css/responsive.css" rel="stylesheet">
+</head>
+<div class="iq_wrapper">
+    <!--Header Wrap Start-->
+    <header class="iq_header_1">
+        <div class="container">
+            <!--Logo Wrap Start-->
+            <div class="iq_logo">
+                <a href="#"><img src="./static/style/images/logo.jpg" alt="Iqoniq Themes"></a>
+            </div>
+            <!--Logo Wrap Start-->
+            <!--Top Strip Wrap Start-->
+            <div class="iq_ui_element">
+                <!--Top Strip Wrap Start-->
+                <div class="iq_top_strip">
+                    <div class="iq_top_contact pull-left">
+                        <a href="#"> Call us : +01 123 456</a>
+                        <a href="#"> Email :  info@info.com</a>
+                    </div>
+                    <div class="iq_time_wrap pull-right"><i class="fa fa-clock-o"></i> Mon - Sat : 09:00 am - 05:30 pm </div>
+                </div>
+                <!--Top Strip Wrap End-->
+                <!--Navigation wrap Start-->
+                <div class="navigation-wrapper pull-left">
+                    <div class="navigation pull-left">
+                        <ul>
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="">Nos filieres</a>
+                                <ul class="children">
+                                    {% for f in filiere %}
+                                    <li><a href="/infoFiliere/{{f.id}}">{{f.abreviation}} ({{f.NAME}})</a></li>
+                                    {%endfor%}
+                                </ul>
+                            </li>
+                            <li><a href="{{ url_for('aboutUs') }}">About Us</a></li>
+                            <li><a href="{{ url_for('login') }}">Login To Ur Account</a></li>
+                        </ul>
+                    </div>
+                    <!--DL Menu Start-->
+                    <div id="mg-responsive-navigation" class="dl-menuwrapper">
+                        <button class="dl-trigger">Open Menu</button>
+                        <ul class="dl-menu">
+                            <li class="menu-item mg-parent-menu">
+                                <a href="index-2.html">home</a>
+                            </li>
+                            <li><a href="about-us.html">About us</a></li>
+                            <li><a href="#">Gallery</a>
+                                <ul class="dl-submenu">
+                                    <li><a href="gallery-medium.html">Gallery medium</a></li>
+                                    <li><a href="gallery-small.html">Gallery small</a></li>
+                                    <li><a href="gallery-mesnory.html">Masonry Gallery</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--DL Menu END-->
+                    <!--Search Wrap Start-->
+                    <div class="iq_search pull-right">
+                        <button data-toggle="modal" data-target="#search-box"><i class="fa fa-search"></i></button>
+                    </div>
+                    <!--Search Wrap End-->
+                </div>
+                <!--Navigation wrap End-->
+            </div>
+            <!--Top Strip Wrap End-->
+        </div>
+
+    </header>
+
+    <!--Header Wrap End-->
+
+    <!--Banner Wrap Start-->
+
+    <div class="iq_banner">
+
+        <ul class="slider">
+            <li class="">
+                <!--Banner Thumb START-->
+                <a href="#" data-rel="prettyphoto[]" target="_blank">
+                    <img src="./static/style/extra-images/banner-01.jpg" alt="Image here">
+                    <div class="iq-caption-wrapper text-left">
+                        <div class="iq_banner_caption container">
+                            <div class="iq-caption">
+                                <div class="iq-caption-title">The Best Learning Institution</div>
+                                <div class="iq-caption-text">welcome to our university</div>
+
+                                <div class="iq_link_1">Read More</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+                <!--Banner Thumb End-->
+            </li>
+
+        </ul>
+    </div>
+
+
+    <div class="iq_content_wrap">
+        <div class="iq_content_wrap">
+            <section class="center-slider-wrap">
+                <div class="container">
+                    <!--Heading 1 Start-->
+                    <div class="iq_heading_1 text-center">
+                        <h4>Nos<span> Annonces</span></h4>
+                        <p>toute actualite concernant les masters de Fsac</p>
+                    </div>
+                    <!--Heading 1 End-->
+                    <!--Slider Strat Start-->
+                    <div class="blog-slider">
+                        {% for e in annonces %}
+                        <div class="col-md-4 col-sm-6">
+                            <!--Center Dec Start-->
+                            <div class="center-dec">
+                                {% if e.ext in ['.jpge','.png', '.gif','.jpg'] %}
+                                <figure>
+                                    <img src="{{url_for('static',filename='uploads/') }}{{e.file}}" style="width:500px;height:200px;">
+                                </figure>
+                                {% elif e.ext in ['.txt', '.pdf'] %}
+                                <object data="{{e.file}}" type="application/pdf" style="width:500px;height:200px;">
+                                <p>Alternative text - include a link <a href="{{url_for('static',filename='uploads/') }}{{e.file}}">to the Document!</a></p>
+                            </object> {% endif %}
+                                <div class="text">
+                                    <h5><a href="{{url_for('static',filename='uploads/') }}{{e.file}}">{{e.titre}}</a></h5>
+                                    <p> {{e.description}}</p>
+                                </div>
+                            </div>
+                            <!--Center Dec End-->
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    <!--Slider Strat Start-->
+                </div>
+            </section>
+            <section class="iq_upcomming_bg">
+                <div class="container">
+                    <!--Heading Wrap Start-->
+                    <div class="iq_heading_1 text-center">
+                        <h4>Up Coming <span>Events</span></h4>
+                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                            <br>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+                    </div>
+                    <!--Heading Wrap End-->
+                    <!--Upcomming List Wrap Start-->
+                    <div class="row">{% for e in events %}
+                        <!--UpComming Event Start-->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="iq_upcomming_event">
+                                <figure>
+                                    <img src="{{url_for('static',filename='/uploads/') }}{{e.image}}" style="height:375px ;width:260px;">
+                                </figure>
+                                <div class="iq_upcomming_des">
+
+                                    <span>{{e.date}}</span>
+                                    <p>{{e.heure}}</p>
+                                    <h5><a href="#">{{e.nom}}</a></h5>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {%endfor%}
+                    </div>
+                    <!--Upcomming List Wrap End-->
+                </div>
+            </section>
+
+        </div>
+        <!--Iqoniq Content End-->
+
+        <!--Contact Info Wrap Start-->
+        <div class="iq_contact_info">
+            <div class="container">
+                <ul>
+                    <li>
+                        <i class="fa fa-map-marker"></i>
+                        <div class="iq_info_wrap">
+                            <h5>University Address</h5>
+                            <p>Abc Street , new town <span>Sydney</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone"></i>
+                        <div class="iq_info_wrap">
+                            <h5>Contact Number</h5>
+                            <span>+ (0) 123 456 7891</span>
+                            <span>+ (0) 123 456 7891</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone"></i>
+                        <div class="iq_info_wrap">
+                            <h5>Email;</h5>
+                            <a href="mailto:Info@info.com">Info@info.com</a>
+                            <a href="mailto:Support@support.com">Support@support.com</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>{% block content %} {% endblock %}
+        </div>
+
+        <!--Contact Info Wrap End-->
+        <!--Footer Wrap Start-->
+        <footer class="iq_footer_bg">
+            <div class="container">
+                <div class="row">
+                    <!--Widget About Start-->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="iq_uni_title">
+                            <!--Widget Title Start-->
+                            <h4>university of <span>education</span></h4>
+                            <!--Widget Title End-->
+                            <p>Lorem ipsum dolor sit amet elit, sed do eiusmod tempor incididunt ut labore et dolore .</p>
+                            <ul>
+                                <li><span>Moday - Friday</span> 08:00- 05:00</li>
+                                <li><span>Saturday</span> Closed</li>
+                                <li><span>Sunday</span> Closed</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Widget About End-->
+                    <!--Widget Archive Start-->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget_archive">
+                            <!--Widget Title Start-->
+                            <h5 class="widget-title"><span>Our</span> Services</h5>
+                            <!--Widget Title End-->
+                            <!--Social Media Start-->
+                            <ul>
+                                <li>
+                                    <a href="#">Safety & Risk Management</a>
+                                </li>
+                                <li>
+                                    <a href="#">Facilities Services</a>
+                                </li>
+                                <li>
+                                    <a href="#">University Police</a>
+                                </li>
+                                <li>
+                                    <a href="#">Campus Planning</a>
+                                </li>
+                                <li>
+                                    <a href="#">Mail Services</a>
+                                </li>
+                                <li>
+                                    <a href="#">Facilities IT</a>
+                                </li>
+                            </ul>
+                            <!--Social Media End-->
+                        </div>
+                    </div>
+                    <!--Widget Archive End-->
+                    <!--Widget Flickr Start-->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget-flickr">
+                            <!-- Widget Title Start-->
+                            <h5 class="widget-title"><span>Our</span> Photo</h5>
+                            <!-- Widget Title End-->
+                            <div class="flickr-wrap">
+                                <a class="flickrbadges" href="#"><img src="./static/style/extra-images/flickr1.jpg" alt=""></a>
+                                <a class="flickrbadges" href="#"><img src="./static/style/extra-images/flickr2.jpg" alt=""></a>
+                                <a class="flickrbadges" href="#"><img src="./static/style/extra-images/flickr3.jpg" alt=""></a>
+                                <a class="flickrbadges" href="#"><img src="./static/style/extra-images/flickr4.jpg" alt=""></a>
+                                <a class="flickrbadges" href="#"><img src="./static/style/extra-images/flickr5.jpg" alt=""></a>
+                                <a class="flickrbadges" href="#"><img src="./static/style/extra-images/flickr6.jpg" alt=""></a>
+                                <a class="flickrbadges" href="#"><img src="./static/style/extra-images/flickr4.jpg" alt=""></a>
+                                <a class="flickrbadges" href="#"><img src="./static/style/extra-images/flickr5.jpg" alt=""></a>
+                                <a class="flickrbadges" href="#"><img src="./static/style/extra-images/flickr6.jpg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Widget Flickr End-->
+                    <!--Widget News Letter Start-->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget iq_footer_newsletter">
+                            <!--Widget Title Start-->
+                            <h5 class="widget-title"><span>Our</span> Newsletter</h5>
+                            <!--Widget Title End-->
+                            <p>Lorem ipsum dolor sit amet elit, sed do eiusmod tempor incididunt ut labore et dolore .</p>
+                            <form class="iq-input">
+                                <input placeholder="Search ..." type="text">
+                                <label class="iq-input-icon"><input type="submit"></label>
+                            </form>
+                            <!--Widget Title Start-->
+                            <h5 class="widget-title border-none"><span>Our</span> Connected</h5>
+                            <!--Widget Title Start-->
+                            <ul class="iq_footer_social">
+                                <li>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Widget News Letter End-->
+                </div>
+            </div>
+        </footer>
+        <!--Footer Wrap End-->
+        <!--Copy Right Start-->
+        <div class="footer_strip">
+            <h5><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></h5>
+        </div>
+        <!--Copy Right End-->
+        <!-- Modal -->
+        <div class="modal fade" id="search-box" role="dialog">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal-dialog">
+                <!--SEARCH section STARTS-->
+                <div class="iqoniq_courses_search">
+                    <div class="container">
+                        <!--Heading Wrap Start-->
+                        <div class="iq_heading_1 text-center">
+                            <h4>Search For<span>Our Courses</span></h4>
+                            <p>Fill The Below Form and Star Searching</p>
+                        </div>
+                        <!--Heading Wrap End-->
+                        <!--iqoniq FORM STARTS-->
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6">
+                                <!--Iconiq Input STARTS-->
+                                <div class="iq-input">
+                                    <input class="first_input" type="text" placeholder="Search Words">
+                                </div>
+                                <!--Iconiq Input End-->
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <!--Iconiq Input STARTS-->
+                                <div class="iq-input">
+                                    <select name="Category">
+			                                <option value="0">Category</option>
+			                                <option value="9">Publishing Date</option>
+			                                <option value="2">Publishing Date</option>
+			                                <option value="3">Publishing Date</option>
+			                            </select>
+                                </div>
+                                <!--Iconiq Input End-->
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <!--Iconiq Input STARTS-->
+                                <div class="iq-input">
+                                    <select name="Category">
+			                                <option value="0">Category</option>
+			                                <option value="9">Publishing Date</option>
+			                                <option value="2">Publishing Date</option>
+			                                <option value="3">Publishing Date</option>
+			                            </select>
+                                </div>
+                                <!--Iconiq Input End-->
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <!--Iconiq Input STARTS-->
+                                <div class="iq-input">
+                                    <input class="iq_link_1" type="submit" value="Start Search">
+                                </div>
+                                <!--Iconiq Input End-->
+                            </div>
+                        </div>
+                        <!--iqoniq FROM END-->
+                    </div>
+                </div>
+                <!--SEARCH section ENDS-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--iqoniq Wrapper End-->
+<!--Javascript Library-->
+<script src="./static/style/js/jquery.js"></script>
+<!--Bootstrap core JavaScript-->
+<script src="./static/style/js/bootstrap.min.js"></script>
+<!--SLICK SLIDER JavaScript-->
+<script src="./static/style/./static/style/js/slick.min.js"></script>
+<!--Dl Menu Script-->
+<script src="./static/style/js/dl-menu/modernizr.custom.js"></script>
+<script src="./static/style/js/dl-menu/jquery.dlmenu.js"></script>
+<!--Pretty Photo JavaScript-->
+<script src="./static/style/js/jquery.prettyPhoto.js"></script>
+<!--Image Filterable JavaScript-->
+<script src="./static/style/js/jquery-filterable.js"></script>
+<!--Number Count (Waypoints) JavaScript-->
+<script src="./static/style/js/waypoints-min.js"></script>
+<!--Custom JavaScript-->
+<script src="./static/style/js/custom.js"></script>
+</body>
+
+</html>

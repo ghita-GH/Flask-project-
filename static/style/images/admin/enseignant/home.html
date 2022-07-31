@@ -1,0 +1,130 @@
+{% extends 'layout.html' %} {% block content %}
+
+<script>
+    var arr = [];
+    var arr2 = [];
+
+    function myFunction() {
+        var no = document.getElementById("select");
+        var option = no.options[no.selectedIndex].value;
+        arr.push(option);
+        console.log(option);
+        console.log(arr)
+        var txt = document.getElementById("result").value;
+        txt = txt + option + ",";
+        document.getElementById("result").value = txt;
+
+        var option2 = no.options[no.selectedIndex].text;
+        arr2.push(option);
+        var txt2 = document.getElementById("sel").value;
+        txt2 = txt2 + option2 + ",";
+        document.getElementById("sel").value = txt2;
+
+
+    }
+</script>
+
+<section>
+    <div class="event-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="event_pg_blog">
+                        <div class="edu_upmg_area">
+                            <!--Heading Wrap Start-->
+                            <div class="row">
+
+
+
+                                <body class="large-screen">
+                                    <div class="wrap">
+                                        <div class="table-wrapper">
+                                            <table class="table-responsive card-list-table">
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>username</th>
+                                                        <th>Email</th>
+                                                        <th>cni</th>
+                                                        <th>nom</th>
+                                                        <th>prenom</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for e in etu %}
+                                                    <tr>
+                                                        <td data-title="Column #1"> {{e.username}}</td>
+                                                        <td data-title="Column #2">{{e.email}}</td>
+                                                        <td data-title="Column #3">{{e.cni}}</td>
+                                                        <td data-title="Column #5">{{e.nom}}</td>
+                                                        <td data-title="Column #5">{{e.prenom}}</td>
+                                                        <td data-title="Column #5">
+                                                            <a href="/edite_ens/{{e.id}}" class="btn btn-primary">edit</a>
+                                                            <a href="/delete_ens/{{e.id}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-primary btn-delete">delete</a>
+                                                        </td>
+                                                    </tr>
+                                                    {%endfor%}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </body>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="iq_search_courses" style="margin-top: 3px;">
+                        <h4>ADD NEW TEACHER</h4>
+
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            <!--Input Start-->
+                            <div class="iq-input">
+                                <input type="text" placeholder="nom" name="nom" required>
+                            </div>
+
+                            <div class="iq-input">
+                                <input type="text" placeholder="prenom" name="prenom" required>
+                            </div>
+
+                            <div class="iq-input">
+                                <input type="text" placeholder="cni" name="cni" required>
+                            </div>
+
+                            <div class="iq-input">
+                                <input type="text" placeholder="email" name="email" required>
+                            </div>
+                            <div class="iq-input">
+                                <input type="button" onclick="myFunction()" value="Affecter d'autres valeurs" style="margin-left:130px;color: white; background-color: rgb(48, 48, 153);">
+                                <select name="departement" id="select">
+                                                        {% for a in filiere %} 
+                                                        <option value="{{a.id}}">{{a.NAME}}</option>
+                                                        {%endfor%} 
+                                                      </select>
+                            </div>
+                            <div class="iq-input">
+                                <input type="hidden" id="result" name="res" size="20">
+                            </div>
+                            <div class="iq-input">
+                                <input type="text" id="sel" name="sel" size="20" readonly required>
+                            </div>
+                            <div class="iq-input">
+                                <input type="file" name="iamge" id="image" accept="image/png, image/jpeg">
+                            </div>
+                            <div class="iq-input">
+                                <input class="iq_link_1" type="submit" value="Create">
+                            </div>
+                            <!--Input End-->
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
